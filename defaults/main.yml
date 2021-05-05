@@ -12,8 +12,8 @@ haproxy_global: |
       group haproxy
       daemon
       maxconn 200000
-      nbproc "{{ ansible_processor_vcpus }}"
-  {% for n in range(ansible_processor_vcpus) %}
+      nbproc "{{ [ansible_processor_vcpus, 16] | min }}"
+  {% for n in range([ansible_processor_vcpus, 16] | min) %}
       cpu-map {{ n + 1 }} {{ n }}
   {% endfor %}
       ca-base /etc/ssl/certs
