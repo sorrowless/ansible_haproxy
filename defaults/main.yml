@@ -19,7 +19,7 @@ haproxy_global: |
       ca-base /etc/ssl/certs
       crt-base /etc/ssl/private
       ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS
-      ssl-default-bind-options no-sslv3
+      ssl-default-bind-options no-sslv3 no-tlsv10 no-tlsv11
       tune.ssl.default-dh-param 2048
 haproxy_defaults: |
   defaults
@@ -29,9 +29,9 @@ haproxy_defaults: |
       #option log-health-checks
       #mode    http
       #option  dontlognull
-      timeout connect 5000
-      timeout client  50000s
-      timeout server  50000s
+      timeout connect 5s
+      timeout client  5s
+      timeout server  5s
       errorfile 400 /etc/haproxy/errors/400.http
       errorfile 403 /etc/haproxy/errors/403.http
       errorfile 408 /etc/haproxy/errors/408.http
