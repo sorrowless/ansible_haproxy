@@ -1,8 +1,9 @@
 galaxy_info:
-  author: Stanislaw Bogatkin
+  author: Stan Bogatkin
   description: Ansible role to deploy HAProxy
   company: Personal project
   role_name: haproxy
+  namespace: sorrowless
 
   license: Apache
 
@@ -12,6 +13,8 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - xenial
+    - bionic
+    - focal
 
   galaxy_tags: [haproxy]
 
