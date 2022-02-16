@@ -1,4 +1,6 @@
 ---
+haproxy_install_from_ppa: false
+haproxy_ppa_version: 2.4
 haproxy_user: haproxy_admin
 haproxy_pass: haproxy_pass
 haproxy_global: |

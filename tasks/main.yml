@@ -5,6 +5,27 @@
     state: present
   notify:
     - Restart haproxy
+  when: not haproxy_install_from_ppa
+
+- name: Install needed packages
+  package:
+    name: software-properties-common
+    state: present
+  when: haproxy_install_from_ppa
+
+- name: Install HAProxy ppa
+  apt_repository:
+    repo: "ppa:vbernat/haproxy-{{ haproxy_ppa_version }}"
+    state: present
+  when: haproxy_install_from_ppa
+
+- name: Install HAProxy
+  package:
+    name: "haproxy={{ haproxy_ppa_version }}.*"
+    state: present
+  notify:
+    - Restart haproxy
+  when: haproxy_install_from_ppa
 
 - name: Create directory to override default HAProxy service limits
   file:
