@@ -54,7 +54,7 @@
   notify:
     - Reload haproxy
 
-- name: Ensure HAProxy sert-list file
+- name: Ensure HAProxy cert-list file
   ansible.builtin.copy:
     content: "{{ haproxy_cert_list }}"
     dest: /etc/haproxy/cert-list.txt
@@ -65,7 +65,7 @@
   notify:
     - Reload haproxy
 
-- name: Ensure HAProxy sert-list file is absent when empty
+- name: Ensure HAProxy cert-list file is absent when empty
   file:
     path: /etc/haproxy/cert-list.txt
     state: absent
